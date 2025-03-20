@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <color name="skin_bg1_dark">#000</color>
+    <color name="skin_bg2_dark">#ddd</color>
+
+    <color name="skin_text1_dark">#fff</color>
+
+
+
+</resources>

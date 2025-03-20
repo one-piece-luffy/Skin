@@ -1,0 +1,56 @@
+plugins {
+    id 'com.android.application'
+}
+
+
+android {
+    namespace 'com.baofu.skin'
+    compileSdk 35
+
+    defaultConfig {
+        applicationId "com.baofu.skin"
+        minSdk 24
+        targetSdk 35
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    sourceSets {
+        main {
+            res {
+                srcDirs 'src\\main\\res', 'src\\main\\res-dark'
+            }
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+
+    buildFeatures {
+        compose true
+        dataBinding true
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'com.google.android.material:material:1.12.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.2.0'
+    implementation libs.androidx.activity
+    testImplementation 'junit:junit:4.13.2'
+//    implementation 'com.github.one-piece-luffy:netlibrary:2.0.8'
+    implementation project(path: ':lib')
+//    implementation 'com.github.one-piece-luffy:feedback:1.0.0'
+}
