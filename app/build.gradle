@@ -50,6 +50,6 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.2.0'
     implementation libs.androidx.activity
     testImplementation 'junit:junit:4.13.2'
-    implementation 'com.github.one-piece-luffy:skin:1.0.0'
+    implementation 'com.github.one-piece-luffy:Skin:1.0.0'
 //    implementation project(path: ':lib')
 }
