@@ -1,6 +1,10 @@
 package com.baofu.skin.ui;
 
+import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowInsetsController;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.baofu.lib.skin.SkinActivity;
+import com.baofu.lib.skin.SkinManager;
 import com.baofu.skin.R;
 import com.baofu.skin.adpter.AppearanceAdapter;
 import com.baofu.skin.constants.ThemeConstant;
@@ -49,6 +54,53 @@ public class MainActivity extends SkinActivity {
 
     @Override
     public void changeStatusBar() {
+        switch (SkinManager.getInstance().mSkinSuffix) {
+            case ThemeConstant.DARK: {
+                setSystemBarFontColor(false);
+                break;
+            }
+            default: {
+                setSystemBarFontColor(true);
+            }
+        }
+    }
+
+    /**
+     * 设置状态栏字体颜色
+     */
+    private void setSystemBarFontColor(boolean dark){
+        Window window = getWindow();
+        if (window != null) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                WindowInsetsController controller = window.getInsetsController();
+                if (controller != null) {
+                    if (dark) {
+                        // 设置状态栏文字颜色为深色
+                        controller.setSystemBarsAppearance(
+                                WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS,
+                                WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS
+                        );
+                    } else {
+                        // 或者设置为浅色
+                        controller.setSystemBarsAppearance(
+                                0,
+                                WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS
+                        );
+                    }
+                }
+            } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                View decorView = window.getDecorView();
+                int flags = decorView.getSystemUiVisibility();
+                if (dark) {
+                    // 设置状态栏文字颜色为深色
+                    flags |= View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
+                } else {
+                    // 或者设置为浅色
+                    flags &= ~View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
+                }
+                decorView.setSystemUiVisibility(flags);
+            }
+        }
 
     }
 }
