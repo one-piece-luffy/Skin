@@ -24,7 +24,7 @@ android皮肤切换
 
 
 
-4.切换皮肤
+5.切换皮肤
 
     SkinManager.getInstance().loadSkin(ThemeConstant.DARK);
 
