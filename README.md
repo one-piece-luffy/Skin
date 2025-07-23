@@ -28,6 +28,8 @@ android皮肤切换
 
     SkinManager.getInstance().loadSkin(ThemeConstant.DARK);
 
+6.所有皮肤资源都需要以 "skin_" 开头
+
 
 
 
