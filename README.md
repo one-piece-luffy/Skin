@@ -15,12 +15,13 @@ android皮肤切换
 4.添加新的皮肤res目录（eg: res-dark），并在app的buil.gradle添加res路径：
 
     sourceSets {
-    main {
-        res {
-            srcDirs 'src\\main\\res', 'src\\main\\res-dark'
+        main {
+            res {
+                srcDirs 'src\\main\\res', 'src\\main\\res-dark'
+            }
         }
     }
-}
+
 
 
 4.切换皮肤
